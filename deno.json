@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@lottiefiles/dotlottie-web": "jsr:@lottiefiles/dotlottie-web@^0.38.1"
+  }
+}
