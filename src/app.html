@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
 </html>
 
 <style>
@@ -21,7 +24,7 @@
 	}
 
 	body {
-		cursor: url('mouse.svg'), auto;
+		cursor: url('mouse.svg') 14 14, auto;
 	}
 
 	a,
@@ -29,12 +32,23 @@
 	[role='button'],
 	input[type='button'],
 	input[type='submit'] {
-		cursor: url('mouseClick.svg'), pointer !important;
+		cursor: url('mouseClick.svg') 14 14, pointer !important;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		* {
-			cursor: auto; /*reverts to the default cursor */
+			cursor: auto;
+			/*reverts to the default cursor */
 		}
+	}
+
+	.frosted-glass {
+		/* From https://css.glass */
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(9.6px);
+		-webkit-backdrop-filter: blur(9.6px);
+		border: 1px solid rgba(255, 255, 255, 0.3);
 	}
 </style>
