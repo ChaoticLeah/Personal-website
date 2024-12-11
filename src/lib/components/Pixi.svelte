@@ -125,5 +125,9 @@
 		})();
 	});
 </script>
-
-<div bind:this={div} class="z-[-1] bg-base-200"></div>
+<!-- blur-3xl -->
+<div class="z-[-1] bg-base-200 opacity-50 ">
+	<div bind:this={div} class="blur-3xl">
+		
+	</div>
+</div>
