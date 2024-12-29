@@ -24,6 +24,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Leahs personal website - HOME</title>
+</svelte:head>
+
 <div class="h-full w-full overflow-hidden">
 	<Background />
 	<Pixi />
