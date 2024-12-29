@@ -1,13 +1,12 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-
-	let debugMode = false;
+	import type { MouseEventHandler } from 'svelte/elements';
 
 	const gridRows = 30; // Number of rows
 	const gridCols = 60; // Number of columns
 
-	const icons = [
+	let icons = [
 		'mage:folder',
 		'mage:camera-fill',
 		'mage:cup-hot',
@@ -23,71 +22,38 @@
 		'mage:ribbon',
 		'mage:save-floppy'
 	];
-	// let mouseX = 0;
-	// let mouseY = 0;
 
-	// function handleMouseMove(event: { clientX: number; clientY: number }) {
-	// 	const { clientX, clientY } = event;
-	// 	document.documentElement.style.setProperty('--cursor-x', clientX + 'px');
-	// 	document.documentElement.style.setProperty('--cursor-y', clientY + 'px');
-	// }
+	type ClickEvent = MouseEventHandler<HTMLButtonElement>;
 
-	// function calculateOpacity(index: number) {
-	// 	if (typeof window === 'undefined') return 0;
-
-	// 	const row = Math.floor(index / gridCols);
-	// 	const col = index % gridCols;
-
-	// 	// Get grid container's bounding box
-	// 	const gridRect = document.querySelector('.grid')?.getBoundingClientRect();
-	// 	if (!gridRect) return 0;
-
-	// 	// Calculate cell dimensions
-	// 	const cellWidth = gridRect.width / gridCols;
-	// 	const cellHeight = gridRect.height / gridRows;
-
-	// 	// Calculate cell center position in relation to grid's top-left corner
-	// 	const cellX = gridRect.left + col * cellWidth + cellWidth / 2;
-	// 	const cellY = gridRect.top + row * cellHeight + cellHeight / 2;
-
-	// 	// Calculate distance from cursor to cell center
-	// 	const distance = Math.hypot(mouseX - cellX, mouseY - cellY);
-
-	// 	// Normalize distance to a range between 0 and 1
-	// 	const maxDistance = Math.hypot(window.innerWidth, window.innerHeight) / 4;
-	// 	const opacity = Math.max(0.1, 1 - distance / maxDistance);
-
-	// 	return opacity.toFixed(2); // Limit precision for smoother rendering
-	// }
-
-	// onMount(() => {
-	// 	document.addEventListener('mousemove', handleMouseMove);
-	// });
+	const behaviors = {
+		'mage:female': {
+			click: (event: ClickEvent)=>{
+				alert('Yeah im a girl :) 🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️')
+			}
+		},
+		'mage:heart': {
+			click: (event: ClickEvent)=>{
+				//More hearts!
+				icons = [...icons, 'mage:heart-fill']
+			}
+		},
+		'mage:cup-hot': {
+			click: (event: ClickEvent)=>{
+				window.open('https://ko-fi.com/chaotickitsune')
+			}
+		}
+	}
 </script>
 
 <div class="scroll-container">
 	<div class="grid" style="--rows: {gridRows}; --cols: {gridCols};">
 		{#each Array(gridRows * gridCols) as _, i}
-			<div class="opacity-10 hover:opacity-40">
+			<button class="opacity-10 hover:opacity-100 ease-out transition-all duration-1000" tabindex="-1" on:click={(behaviors[icons[i % icons.length]] || {})?.click}>
 				<Icon icon={icons[i % icons.length]} height="2rem" class={['text-primary', 'text-secondary', 'text-accent'][i % 8]} />
-			</div>
+			</button>
 		{/each}
 	</div>
-	<!-- <div class="grid" style="--rows: {gridRows}; --cols: {gridCols};">
-		{#each Array(gridRows * gridCols) as _, i}
-			<div style="opacity: {calculateOpacity(i)};">
-				{#if debugMode}
-					{calculateOpacity(i)}
-				{:else}
-					<Icon icon={icons[i % icons.length]} height="2rem" />
-				{/if}
-			</div>
-		{/each}
-	</div> -->
 </div>
-<!-- {#key mouseX}
-    <div class="highlight" style="transform: translate(calc({mouseX}px), calc({mouseY}px));"></div>
-{/key} -->
 
 <style>
 	:global(body) {

@@ -17,7 +17,7 @@
 
 	let subtitle = $state('Under Construction :3');
 
-	const titleClickMessages = ['hehe that tickles', ':3', 'Heyyy!', 'Meoww meoww']
+	const titleClickMessages = ['hehe that tickles', ':3', 'Heyyy!', 'Meoww meoww', 'This page has hyfetch... kinda']
 
 	onMount(() => {
 		defineHyfetch();
