@@ -24,6 +24,6 @@
     <p>Coming soon</p>
     <div class="divider" />
     <div class="flex justify-center">    
-        <FriendIcon icon="https://exhq.dev/88x31.png" url="https://exhq.dev/" alt="Amy page" />
+        <FriendIcon icon="https://amy.rip/88x31.png" url="https://amy.rip/" alt="Amy page" />
     </div>
 </Modal>

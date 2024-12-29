@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Background from '$lib/components/Background.svelte';
+
 	// import LottiePlayer from '$lib/components/LottiePlayer.svelte';
 	import FriendIcon from '$lib/components/FriendIcon.svelte';
 	import LinkButton from '$lib/components/LinkButton.svelte';
@@ -23,11 +25,12 @@
 </script>
 
 <div class="h-full w-full overflow-hidden">
+	<Background />
 	<Pixi />
 	<!--  bg-base-200 -->
-	<div class="hero absolute top-0 z-10 min-h-screen">
+	<div class="hero absolute top-0 z-10 min-h-screen pointer-events-none">
 		<div class="hero-content text-center">
-			<div class="max-w-md">
+			<div class="max-w-md  pointer-events-auto">
 				<button
 					class="title text-8xl font-bold transition-all duration-1000 hover:translate-y-[-4rem] hover:drop-shadow-glowtrans"
 					aria-label="Click to reset the typewriter effect and change the subtitle"

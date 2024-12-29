@@ -126,7 +126,7 @@
 	});
 </script>
 <!-- blur-3xl -->
-<div class="z-[-1] bg-base-200 opacity-50 ">
+<div class="z-[-1] bg-base-200 opacity-50 pointer-events-none">
 	<div bind:this={div} class="blur-3xl">
 		
 	</div>
