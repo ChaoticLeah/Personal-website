@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Background from '$lib/components/Background.svelte';
+	import Floppy from '$lib/components/Floppy.svelte';
 
 	// import LottiePlayer from '$lib/components/LottiePlayer.svelte';
 	import FriendIcon from '$lib/components/FriendIcon.svelte';

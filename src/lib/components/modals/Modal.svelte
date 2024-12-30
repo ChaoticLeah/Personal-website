@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  let { title, hasCloseButton = true, canClose = true } = $props()
+  let { title, hasCloseButton = true, canClose = true, className = '' } = $props()
 
   let dialogElement: HTMLDialogElement
 
@@ -68,7 +68,7 @@
 
 {#if !isMobile}
   <dialog bind:this={dialogElement} class="modal">
-    <div class="modal-box">
+    <div class="modal-box {className}">
       {#if hasCloseButton}
         <button
           class="btn btn-md btn-circle btn-ghost absolute right-2 top-2"
@@ -89,7 +89,7 @@
     ontouchmove={handleTouchMove}
     ontouchend={handleTouchEnd}
   >
-    <div class="modal-box absolute !bottom-0 !rounded-b-none overflow-x-hidden">
+    <div class="modal-box absolute !bottom-0 !rounded-b-none overflow-x-hidden {className}">
       {#if hasCloseButton}
         <button
           class="btn btn-md btn-circle btn-ghost absolute right-2 top-2"

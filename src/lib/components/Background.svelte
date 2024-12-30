@@ -2,6 +2,9 @@
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
+	import FloppySelect from './modals/FloppySelect.svelte';
+
+	let floppySelect: FloppySelect;
 
 	const gridRows = 30; // Number of rows
 	const gridCols = 60; // Number of columns
@@ -27,34 +30,50 @@
 
 	const behaviors = {
 		'mage:female': {
-			click: (event: ClickEvent)=>{
-				alert('Yeah im a girl :) 🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️')
+			click: (event: ClickEvent) => {
+				alert('Yeah im a girl :) 🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️🏳️‍⚧️');
 			}
 		},
 		'mage:heart': {
-			click: (event: ClickEvent)=>{
+			click: (event: ClickEvent) => {
 				//More hearts!
-				icons = [...icons, 'mage:heart-fill']
+				icons = [...icons, 'mage:heart-fill'];
 			}
 		},
 		'mage:cup-hot': {
-			click: (event: ClickEvent)=>{
-				window.open('https://ko-fi.com/chaotickitsune')
+			click: (event: ClickEvent) => {
+				window.open('https://ko-fi.com/chaotickitsune');
+			}
+		},
+		'mage:save-floppy': {
+			click: (event: ClickEvent) => {
+				floppySelect.open();
 			}
 		}
-	}
+	};
 </script>
-<div class=" overflow-clip w-screen h-screen">
+
+<div class=" h-screen w-screen overflow-clip">
 	<div class="scroll-container">
 		<div class="grid" style="--rows: {gridRows}; --cols: {gridCols};">
 			{#each Array(gridRows * gridCols) as _, i}
-				<button class="opacity-10 hover:opacity-100 ease-out transition-all duration-1000" tabindex="-1" on:click={(behaviors[icons[i % icons.length]] || {})?.click}>
-					<Icon icon={icons[i % icons.length]} height="2rem" class={['text-primary', 'text-secondary', 'text-accent'][i % 8]} />
+				<button
+					class="opacity-10 transition-all duration-1000 ease-out hover:opacity-100"
+					tabindex="-1"
+					on:click={(behaviors[icons[i % icons.length]] || {})?.click}
+				>
+					<Icon
+						icon={icons[i % icons.length]}
+						height="2rem"
+						class={['text-primary', 'text-secondary', 'text-accent'][i % 8]}
+					/>
 				</button>
 			{/each}
 		</div>
 	</div>
 </div>
+
+<FloppySelect bind:this={floppySelect} />
 
 <style>
 	:global(body) {
