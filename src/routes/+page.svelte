@@ -29,8 +29,11 @@
 </svelte:head>
 
 <div class="h-full w-full overflow-hidden">
-	<Background />
 	<Pixi />
+	<Background />
+
+	<img src="top-left-wires.svg" alt='Some aestetic ropes in the corner of the screen' class="absolute top-0 left-0">
+
 	<!--  bg-base-200 -->
 	<div class="hero absolute top-0 z-10 min-h-screen pointer-events-none">
 		<div class="hero-content text-center">

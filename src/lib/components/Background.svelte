@@ -44,14 +44,15 @@
 		}
 	}
 </script>
-
-<div class="scroll-container">
-	<div class="grid" style="--rows: {gridRows}; --cols: {gridCols};">
-		{#each Array(gridRows * gridCols) as _, i}
-			<button class="opacity-10 hover:opacity-100 ease-out transition-all duration-1000" tabindex="-1" on:click={(behaviors[icons[i % icons.length]] || {})?.click}>
-				<Icon icon={icons[i % icons.length]} height="2rem" class={['text-primary', 'text-secondary', 'text-accent'][i % 8]} />
-			</button>
-		{/each}
+<div class=" overflow-clip w-screen h-screen">
+	<div class="scroll-container">
+		<div class="grid" style="--rows: {gridRows}; --cols: {gridCols};">
+			{#each Array(gridRows * gridCols) as _, i}
+				<button class="opacity-10 hover:opacity-100 ease-out transition-all duration-1000" tabindex="-1" on:click={(behaviors[icons[i % icons.length]] || {})?.click}>
+					<Icon icon={icons[i % icons.length]} height="2rem" class={['text-primary', 'text-secondary', 'text-accent'][i % 8]} />
+				</button>
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -64,7 +65,6 @@
 		align-items: center;
 		min-height: 100vh;
 		overflow: hidden;
-		background-color: #000; /* Background color */
 	}
 
 	.scroll-container {
